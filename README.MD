@@ -17,4 +17,11 @@ Write a program that solves a maze as described in the introduction with a genet
     
 4.  In the genetic algorithm you should crossover the DNA of two individuals that score roughly the same on the fitness function. This means that like in the 8 queen example you swap parts of the sequence of moves. After this also some random mutation can be applied to the offspring.
     
-5.  Let only the best performing individuals of the offspring live (and don’t feel sorry for those who didn’t make it...)
+5.  Let only the best performing individuals of the offspring live (and donï¿½t feel sorry for those who didnï¿½t make it...)
+
+## Links used
+- https://stackoverflow.com/questions/25798958/iterate-through-2-dimensional-array
+- https://stackoverflow.com/questions/49493733/draw-or-paint-a-2d-array-in-java
+- https://docs.oracle.com/javase/7/docs/api/java/awt/Graphics.html
+- https://docs.oracle.com/javase/7/docs/api/java/awt/Color.html
+- https://www.geeksforgeeks.org/print-2-d-array-matrix-java/
