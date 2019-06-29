@@ -3,13 +3,12 @@ import java.awt.*;
 
 //Class for the actual drawing of our board
 public class Board extends JPanel {
-    //TODO: Fix array being flipped
     public int[][] mazeArray = new int[][]{
-        {1, 1, 1, 1},
-        {1, 2, 0, 1},
-        {1, 1, 0, 1},
-        {1, 0, 9, 1},
-        {1, 1, 1, 1}
+        {1, 1, 1, 1,1},
+        {1, 0, 0, 2,1},
+        {1, 0, 1, 1,1},
+        {1, 0, 0, 9,1},
+        {1, 1, 1, 1,1}
     };
 
     @Override
@@ -39,15 +38,15 @@ public class Board extends JPanel {
                  if(mazeArray[xPos][yPos] == 1) {
                      System.out.println("WALL");
                      g.setColor(Color.BLACK);
-                     g.fillRect(currentX, currentY, blockWidth, blockHeight);
+                     g.fillRect(currentY, currentX, blockWidth, blockHeight);
                  } else if(mazeArray[xPos][yPos] == 2) {
                     System.out.println("PLAYER");
                     g.setColor(Color.MAGENTA);
-                    g.fillRect(currentX, currentY, blockWidth, blockHeight );
+                    g.fillRect(currentY, currentX, blockWidth, blockHeight );
                 } else if(mazeArray[xPos][yPos] == 9) {
                     System.out.println("ENDGAME");
                     g.setColor(Color.GREEN);
-                    g.fillRect(currentX, currentY, blockWidth, blockHeight );
+                    g.fillRect(currentY, currentX, blockWidth, blockHeight );
                 }
                  //Move our pointer along to the next column
                 System.out.println();
