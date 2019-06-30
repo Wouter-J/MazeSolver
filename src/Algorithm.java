@@ -7,7 +7,7 @@ public class Algorithm {
     private Individual individual;
 
     public int POP_SIZE = 5;
-    public int MAX_MOVES = 10;
+    public int MAX_MOVES = 2;
 
     public void setupPop(){
 
@@ -20,9 +20,8 @@ public class Algorithm {
                 //Random between 1 & 4
                 moves[x] = ThreadLocalRandom.current().nextInt(1, 4 + 1);
             }
-            individual.moveBoi = moves;
+            individual.moveList = moves;
         }
-            //individual.moveList[i] = 4;
     }
 
 
@@ -32,7 +31,9 @@ public class Algorithm {
         this.individual = new Individual(game);
 
         setupPop();
-        individual.Move();
+        for(int i = 0; i < POP_SIZE; i++){
+            individual.Move();
+        }
         //game.startGame();
     }
 
