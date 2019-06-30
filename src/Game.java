@@ -206,7 +206,7 @@ public class Game {
         return this.playerPosition;
     }
 
-    public void checkWin(){
+    public boolean checkWin(){
 //        System.out.println("Checkwin called");
 //        System.out.println(this.playerPosition.getPlayerX() + ", " +this.playerPosition.getPlayerY());
 //        System.out.println(this.winPosition.getPlayerX() + ", " +this.winPosition.getPlayerY());
@@ -214,6 +214,9 @@ public class Game {
         if(this.playerPosition.getPlayerX() == this.winPosition.getPlayerX() &&
             this.playerPosition.getPlayerY() == this.winPosition.getPlayerY()) {
             System.out.println("Game won!");
+            return true;
+        } else {
+            return false;
         }
     }
 

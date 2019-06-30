@@ -18,6 +18,8 @@ public class Individual {
         this.fitnessScore = 0;
         this.fitnessScore = 0;
         this.freedomPoints = 0;
+
+        //TODO: Add first and lastpos
     }
 
     //Movement in the movelist is based on numbers.
@@ -35,6 +37,9 @@ public class Individual {
                         wallHugs += 1;
                     }
                     game.moveUp();
+                    if(game.checkWin()){
+                        freedomPoints += 200;
+                    }
                     break;
                 }
                 case 2: {
@@ -46,6 +51,9 @@ public class Individual {
                         wallHugs += 1;
                     }
                     game.moveLeft();
+                    if(game.checkWin()){
+                        freedomPoints += 200;
+                    }
                     break;
                 }
                 case 3: {
@@ -57,6 +65,9 @@ public class Individual {
                         wallHugs += 1;
                     }
                     game.moveRight();
+                    if(game.checkWin()){
+                        freedomPoints += 200;
+                    }
                     break;
                 }
                 case 4: {
@@ -68,6 +79,9 @@ public class Individual {
                         wallHugs += 1;
                     }
                     game.moveDown();
+                    if(game.checkWin()){
+                        freedomPoints += 200;
+                    }
                     break;
                 }
                 default: {
@@ -90,9 +104,15 @@ public class Individual {
 
         this.fitnessScore = freedomPoints - wallHugs;
         System.out.println("Individual fit score: " + fitnessScore);
+
+        //TODO: Checkout this calc
+        //float score = Math.Abs((lastpos.x - endcell.gridPos.x) + Mathf.Abs(lastpos.y - endcell.gridPos.y))
     }
 
-
+    @Override
+    public String toString(){
+        return "Individual fitscore: " + fitnessScore + " Movelist: " + moveList;
+    }
 
 
 }
