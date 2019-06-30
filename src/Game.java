@@ -4,6 +4,7 @@ import java.awt.event.KeyListener;
 
 public class Game {
     private PlayerPosition playerPosition;
+    private PlayerPosition winPosition; //Using the playerPosition class to also determine win.
 
     private int[][] mazeArray;
 
@@ -43,6 +44,7 @@ public class Game {
         frame.repaint();
 
         playerPosition = this.getCurrentPos();
+        winPosition = this.getCurrentPos();
 
         //Controls for player / AI
         //TODO: Perhaps move
@@ -96,11 +98,15 @@ public class Game {
             frame.validate();
             frame.repaint();
 
+            checkWin();
+
             try {
                 Thread.sleep(300);
             } catch(Exception e){
                 System.out.println(e);
             }
+
+
 
         } else {
             System.out.println("Stuck");
@@ -119,6 +125,8 @@ public class Game {
             this.playerPosition = getCurrentPos();
             frame.validate();
             frame.repaint();
+
+            checkWin();
 
             try {
                 Thread.sleep(300);
@@ -143,6 +151,8 @@ public class Game {
             frame.validate();
             frame.repaint();
 
+            checkWin();
+
             try {
                 Thread.sleep(300);
             } catch(Exception e){
@@ -166,6 +176,8 @@ public class Game {
             frame.validate();
             frame.repaint();
 
+            checkWin();
+
             try {
                 Thread.sleep(300);
             } catch(Exception e){
@@ -185,10 +197,24 @@ public class Game {
 
                     System.out.println("Player's at: " + x + ", " + y);
                     //System.out.println("Update playerpos to: " +this.playerPosition);
+                } else if(mazeArray[x][y] == 9){
+                    winPosition = new PlayerPosition(y, x);
+                    System.out.println("Win is at: " + x + ", " + y);
                 }
             }
         }
         return this.playerPosition;
+    }
+
+    public void checkWin(){
+//        System.out.println("Checkwin called");
+//        System.out.println(this.playerPosition.getPlayerX() + ", " +this.playerPosition.getPlayerY());
+//        System.out.println(this.winPosition.getPlayerX() + ", " +this.winPosition.getPlayerY());
+        //TODO: Clean this up?
+        if(this.playerPosition.getPlayerX() == this.winPosition.getPlayerX() &&
+            this.playerPosition.getPlayerY() == this.winPosition.getPlayerY()) {
+            System.out.println("Game won!");
+        }
     }
 
 }
