@@ -4,7 +4,7 @@ public class Main {
 
         Game game = new Game();
         game.createBoard();
-        //Algorithm algorithm = new Algorithm(game);
+        Algorithm algorithm = new Algorithm(game);
 
         //Individual individual = new Individual();
         //individual.Move();

@@ -33,11 +33,12 @@ public class Algorithm {
         setupPop();
         for(int i = 0; i < POP_SIZE; i++){
             individual.Move();
+            individual.calcFittest();
         }
         //game.startGame();
     }
 
-    //TODO: Compute fitness
+
     //TODO: Select fittest
     void selection(){
 

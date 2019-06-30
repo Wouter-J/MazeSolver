@@ -5,10 +5,18 @@ public class Individual {
 
     //public List<Integer> moveList = new ArrayList<>();
     public int[] moveList;
+    private int fitnessScore;
     private Game game;
+
+    //Variables for fitnessScore
+    public int wallHugs;
+    public int freedomPoints;
 
     public Individual(Game game){
         this.game = game;
+        this.fitnessScore = 0;
+        this.fitnessScore = 0;
+        this.freedomPoints = 0;
     }
 
     //Movement in the movelist is based on numbers.
@@ -18,21 +26,46 @@ public class Individual {
             switch(moveList[i]) {
                 case 1: {
                     System.out.println("Moving up!");
+                    //Logic for fitness score might need to be moved
+                    if(!(game.mazeArray[game.playerPosition.getPlayerY() -1][game.playerPosition.getPlayerX()] == 1)){
+                        freedomPoints += 1;
+                    } else {
+                        System.out.println("Stuck");
+                        wallHugs += 1;
+                    }
                     game.moveUp();
                     break;
                 }
                 case 2: {
                     System.out.println("Moving left!");
+                    if(!(game.mazeArray[game.playerPosition.getPlayerY()][game.playerPosition.getPlayerX() -1] == 1)){
+                        freedomPoints += 1;
+                    } else {
+                        System.out.println("Stuck");
+                        wallHugs += 1;
+                    }
                     game.moveLeft();
                     break;
                 }
                 case 3: {
                     System.out.println("Moving right!");
+                    if(!(game.mazeArray[game.playerPosition.getPlayerY()][game.playerPosition.getPlayerX() +1] == 1)){
+                        freedomPoints += 1;
+                    } else {
+                        System.out.println("Stuck");
+                        wallHugs += 1;
+                    }
                     game.moveRight();
                     break;
                 }
                 case 4: {
                     System.out.println("Moving down!");
+                    if(!(game.mazeArray[game.playerPosition.getPlayerY() +1][game.playerPosition.getPlayerX()] == 1)){
+                        freedomPoints += 1;
+                    } else {
+                        System.out.println("Stuck");
+                        wallHugs += 1;
+                    }
                     game.moveDown();
                     break;
                 }
@@ -45,4 +78,16 @@ public class Individual {
         }
 
     }
+
+    //TODO: Compute fitness
+    void calcFittest(){
+        System.out.println("Wall hugs");
+        System.out.println(this.wallHugs);
+
+        System.out.println("Freedom points");
+        System.out.println(this.freedomPoints);
+
+        this.fitnessScore = freedomPoints - wallHugs;
+    }
+
 }

@@ -3,10 +3,10 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class Game {
-    private PlayerPosition playerPosition;
-    private PlayerPosition winPosition; //Using the playerPosition class to also determine win.
+    public PlayerPosition playerPosition;
+    public PlayerPosition winPosition; //Using the playerPosition class to also determine win.
 
-    private int[][] mazeArray;
+    public int[][] mazeArray;
 
     //Setting up variables
     public Game(){
