@@ -1,11 +1,12 @@
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Individual {
 
     //public List<Integer> moveList = new ArrayList<>();
     public int[] moveList;
-    private int fitnessScore;
+    public int fitnessScore;
     private Game game;
 
     //Variables for fitnessScore
@@ -79,7 +80,7 @@ public class Individual {
 
     }
 
-    //TODO: Compute fitness
+    //TODO: Compute fitness in a cleaner way
     void calcFittest(){
         System.out.println("Wall hugs");
         System.out.println(this.wallHugs);
@@ -88,6 +89,10 @@ public class Individual {
         System.out.println(this.freedomPoints);
 
         this.fitnessScore = freedomPoints - wallHugs;
+        System.out.println("Individual fit score: " + fitnessScore);
     }
+
+
+
 
 }

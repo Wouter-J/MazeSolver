@@ -32,3 +32,4 @@ Write a program that solves a maze as described in the introduction with a genet
 ## Links used | AI creation
  - https://towardsdatascience.com/introduction-to-genetic-algorithms-including-example-code-e396e98d8bf3
  - https://stackoverflow.com/questions/5887709/getting-random-numbers-in-java
+ - https://stackoverflow.com/questions/43206593/how-to-split-an-integer-array-into-two
