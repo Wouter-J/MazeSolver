@@ -83,10 +83,10 @@ public class Game {
     //Code for moving a player up;
     //To move up we add one to the player's X axis so player {0, 1} becomes player {0, 2}
     //Based on this we can redraw the square that is a player; with this the player seems to move
-    private void moveUp(){
-//        System.out.println(playerPosition.getPlayerX());
-//        System.out.println(playerPosition.getPlayerY());
-//        System.out.println(mazeArray[playerPosition.getPlayerY () -1][playerPosition.getPlayerX()]);
+    public void moveUp(){
+        System.out.println(playerPosition.getPlayerX());
+        System.out.println(playerPosition.getPlayerY());
+        System.out.println(mazeArray[playerPosition.getPlayerY () -1][playerPosition.getPlayerX()]);
         if(!(mazeArray[playerPosition.getPlayerY() -1][playerPosition.getPlayerX()] == 1)){
             System.out.println("YEET");
 
@@ -105,7 +105,7 @@ public class Game {
 
     //Code for moving a player left;
     //To move up we extract one to the player's Y axis so player {1, 0} becomes player {0, 0}
-    private void moveLeft(){
+    public void moveLeft(){
         if(!(mazeArray[playerPosition.getPlayerY()][playerPosition.getPlayerX() -1] == 1)){
             System.out.println("YEET");
 
@@ -123,7 +123,7 @@ public class Game {
 
     //Code for moving a player right;
     //To move up we add one to the player's Y axis so player {1, 0} becomes player {2, 0}
-    private void moveRight(){
+    public void moveRight(){
         if(!(mazeArray[playerPosition.getPlayerY()][playerPosition.getPlayerX() +1] == 1)){
             System.out.println("YEET");
 
@@ -141,7 +141,7 @@ public class Game {
 
     //Code for moving a player down;
     //To move up we extract one to the player's X axis so player {0, 1} becomes player {0, 0}
-    private void moveDown(){
+    public void moveDown(){
         if(!(mazeArray[playerPosition.getPlayerY() +1][playerPosition.getPlayerX()] == 1)){
             System.out.println("YEET");
 
