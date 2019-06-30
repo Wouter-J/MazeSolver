@@ -1,25 +1,23 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.Scanner;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class Game {
+    private PlayerPosition playerPosition;
 
     private int[][] mazeArray;
-    private PlayerPosition playerPosition;
 
     //Setting up variables
     public Game(){
-
-        //TODO: Get variable from one point in solution
-        mazeArray  = new int[][]{
+        this.mazeArray = new int[][]{
                 {1, 1, 1, 1,1},
-                {1, 0, 0, 2,1},
+                {1, 0, 0, 0,1},
                 {1, 0, 1, 1,1},
-                {1, 0, 0, 9,1},
+                {1, 2, 0, 9,1},
                 {1, 1, 1, 1,1}
         };
-
     }
 
     //Game start function
@@ -34,7 +32,7 @@ public class Game {
         frame.setTitle("MazeSolver");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        frame.getContentPane().add(new Board());
+        frame.getContentPane().add(new Board(mazeArray));
 
         //frame.setSize(800, 800);
         frame.setBounds(0, 0, 900, 900);
@@ -86,18 +84,40 @@ public class Game {
 
     //Code for moving a player up;
     private void moveUp(){
+        System.out.println(playerPosition.getPlayerX());
+        System.out.println(playerPosition.getPlayerY());
+        System.out.println(mazeArray[playerPosition.getPlayerY () -1][playerPosition.getPlayerX()]);
+        if(!(mazeArray[playerPosition.getPlayerY() -1][playerPosition.getPlayerX()] == 1)){
+            System.out.println("YEET");
 
-        frame.repaint();
+            mazeArray[playerPosition.getPlayerY()][playerPosition.getPlayerX()] = 0;
+            mazeArray[playerPosition.getPlayerY() -1][playerPosition.getPlayerX()] = 2;
+
+            this.playerPosition = new PlayerPosition(playerPosition.getPlayerX(), this.playerPosition.getPlayerY() -1);
+            //this.playerPosition = getCurrentPos();
+            frame.validate();
+            frame.repaint();
+
+        } else {
+            System.out.println("Stuck");
+        }
+
     }
 
     //Code for moving a player up;
     private void moveLeft(){
-
+        if(!(mazeArray[playerPosition.getPlayerX()][playerPosition.getPlayerY()] == 1)){
+            System.out.println("YEET");
+        }
+        this.playerPosition = getCurrentPos();
     }
 
     //Code for moving a player up;
     private void moveRight(){
-
+        if(!(mazeArray[playerPosition.getPlayerX()][playerPosition.getPlayerY()] == 1)){
+            System.out.println("YEET");
+        }
+        this.playerPosition = getCurrentPos();
     }
 
     //Code for moving a player up;
@@ -107,13 +127,12 @@ public class Game {
 
     public PlayerPosition getCurrentPos() {
         for (int x = 0; x < mazeArray.length; x++) {
-            for (int y = 0; y < mazeArray.length; y++) {
+            for (int y = 0; y < mazeArray[x].length; y++) {
                 if (mazeArray[x][y] == 2) {
-                    System.out.println("Player pos found!");
-                    this.playerPosition = new PlayerPosition(x, y);
+                    playerPosition = new PlayerPosition(y, x);
 
-                    System.out.println("Player's at" + x + ", " + y);
-                    System.out.println("Update playerpos to: " +this.playerPosition);
+                    System.out.println("Player's at: " + x + ", " + y);
+                    //System.out.println("Update playerpos to: " +this.playerPosition);
                 }
             }
         }

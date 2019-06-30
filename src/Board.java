@@ -3,14 +3,12 @@ import java.awt.*;
 
 //Class for the actual drawing of our board
 public class Board extends JPanel {
-    public int[][] mazeArray = new int[][]{
-        {1, 1, 1, 1,1},
-        {1, 0, 0, 2,1},
-        {1, 0, 1, 1,1},
-        {1, 0, 0, 9,1},
-        {1, 1, 1, 1,1}
-    };
 
+    private int[][] mazeArray;
+
+    public Board(int[][] mazeArray){
+        this.mazeArray = mazeArray;
+    }
 
     public int[][] getMaze(){
         return this.mazeArray;
@@ -18,6 +16,7 @@ public class Board extends JPanel {
 
     @Override
     public void paintComponent(Graphics g){
+        System.out.println("PAINT CALLED");
         super.paintComponent(g);
         int blockHeight = 30;
         int blockWidth = 30;
@@ -53,6 +52,8 @@ public class Board extends JPanel {
                     g.setColor(Color.GREEN);
                     g.fillRect(currentY, currentX, blockWidth, blockHeight );
                 }
+                //Here we draw square's it's a visual thing.
+                g.drawRect(currentY, currentX, blockWidth, blockHeight );
                  //Move our pointer along to the next column
                 System.out.println();
                 yPos++;
