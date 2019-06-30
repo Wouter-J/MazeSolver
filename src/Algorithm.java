@@ -56,6 +56,7 @@ public class Algorithm {
             evolve(child);
 
             System.out.println("Generation: " + genCount + " Fittest: " + fittestBoi + " Moves" + fittestBoi.moveList);
+            //TODO: Add a path for every individual and a best of replay function
         }
 
         genCount++;

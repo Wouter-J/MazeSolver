@@ -16,7 +16,7 @@ public class Individual {
     public Individual(Game game){
         this.game = game;
         this.fitnessScore = 0;
-        this.fitnessScore = 0;
+        this.wallHugs = 0;
         this.freedomPoints = 0;
 
         //TODO: Add first and lastpos
