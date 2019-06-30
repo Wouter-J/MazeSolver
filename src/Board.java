@@ -11,6 +11,11 @@ public class Board extends JPanel {
         {1, 1, 1, 1,1}
     };
 
+
+    public int[][] getMaze(){
+        return this.mazeArray;
+    }
+
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
@@ -36,15 +41,15 @@ public class Board extends JPanel {
                  currentY += boxHeight) {
                 //g.drawRect(currentX, currentY, boxWidth, boxHeight);
                  if(mazeArray[xPos][yPos] == 1) {
-                     System.out.println("WALL");
+                     //System.out.println("WALL");
                      g.setColor(Color.BLACK);
                      g.fillRect(currentY, currentX, blockWidth, blockHeight);
                  } else if(mazeArray[xPos][yPos] == 2) {
-                    System.out.println("PLAYER");
+                    //System.out.println("PLAYER");
                     g.setColor(Color.MAGENTA);
                     g.fillRect(currentY, currentX, blockWidth, blockHeight );
                 } else if(mazeArray[xPos][yPos] == 9) {
-                    System.out.println("ENDGAME");
+                    //System.out.println("ENDGAME");
                     g.setColor(Color.GREEN);
                     g.fillRect(currentY, currentX, blockWidth, blockHeight );
                 }

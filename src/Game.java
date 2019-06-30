@@ -1,13 +1,23 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 public class Game {
 
-
+    private int[][] mazeArray;
+    private int playerX;
+    private  int playerY;
 
     //Setting up variables
     public Game(){
-
+        mazeArray  = new int[][]{
+                {1, 1, 1, 1,1},
+                {1, 0, 0, 2,1},
+                {1, 0, 1, 1,1},
+                {1, 0, 0, 9,1},
+                {1, 1, 1, 1,1}
+        };
     }
 
     //Game start function
@@ -15,8 +25,8 @@ public class Game {
 
     }
 
+    //TODO: Perhaps move this to a seperate class
     public JFrame frame;
-
     public void createBoard(){
         frame = new JFrame();
         frame.setTitle("MazeSolver");
@@ -33,5 +43,77 @@ public class Game {
         //frame.getContentPane().validate();
         //frame.getContentPane().repaint();
         frame.repaint();
+
+        //Controls for player / AI
+        //TODO: Perhaps move
+            frame.addKeyListener(new KeyListener() {
+                @Override
+                public void keyTyped(KeyEvent e) {
+                    //Register a single press
+                }
+
+                @Override
+                public void keyPressed(KeyEvent e) {
+                    //Register a constant press
+                    System.out.println("KEY PRESS" + e.getKeyCode()+ ", char=" + e.getKeyChar());
+                    char key = e.getKeyChar();
+                    if(key == 'w'){
+                        System.out.println("W pressed");
+                        moveUp();
+                    } else if(key == 'a'){
+                        System.out.println("A pressed");
+                        moveLeft();
+                    } else if(key == 'd'){
+                        System.out.println("D pressed");
+                        moveRight();
+                    } else if(key == 's') {
+                        System.out.println("S pressed");
+                        moveDown();
+                    }
+
+                }
+
+                @Override
+                public void keyReleased(KeyEvent e) {
+                    //Register a release
+                }
+            });
     }
+
+    //Code for moving a player up;
+    private void moveUp(){
+        this.getCurrentPos();
+        frame.repaint();
+    }
+
+    //Code for moving a player up;
+    private void moveLeft(){
+
+    }
+
+    //Code for moving a player up;
+    private void moveRight(){
+
+    }
+
+    //Code for moving a player up;
+    private void moveDown(){
+
+    }
+
+    public void getCurrentPos() {
+        for (int x = 0; x < mazeArray.length; x++) {
+            for (int y = 0; y < mazeArray.length; y++) {
+                if (mazeArray[x][y] == 2) {
+                    System.out.println("Player pos found!");
+
+                    playerX = x;
+                    playerY = y;
+
+                    System.out.println("Player's at" + playerX + ", " + playerY);
+                }
+            }
+        }
+    }
+
 }
