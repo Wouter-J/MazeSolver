@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
@@ -10,6 +11,7 @@ public class Algorithm {
 
     public int POP_SIZE = 5;
     public int MAX_MOVES = 2;
+    public int genCount = 10; //current max amount of generations
 
     Individual[] individuals = new Individual[POP_SIZE];
 
@@ -39,20 +41,24 @@ public class Algorithm {
         this.game = game;
         this.individual = new Individual(game);
 
-        setupPop();
+        for(int z = 0; z < genCount; z++){
+            setupPop();
 
-        for(int i = 0; i < POP_SIZE; i++){
-            individuals[i].Move();
-            individuals[i].calcFittest();
+            for(int i = 0; i < POP_SIZE; i++){
+                individuals[i].Move();
+                individuals[i].calcFittest();
+            }
+            Individual fittestBoi = selection();
+            Individual secondFittest = getSecondFittest();
+
+            Individual child = crossover(fittestBoi, secondFittest);
+            mutate(child);
+            evolve(child);
+
+            System.out.println("Generation: " + genCount + " Fittest: " + fittestBoi + " Moves" + fittestBoi.moveList);
         }
-        Individual fittestBoi = selection();
-        Individual secondFittest = getSecondFittest();
 
-        Individual child = crossover(fittestBoi, secondFittest);
-        mutate(child);
-        evolve(child);
-
-        
+        genCount++;
         //game.startGame();
     }
 
