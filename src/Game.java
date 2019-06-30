@@ -6,11 +6,12 @@ import java.awt.event.KeyListener;
 public class Game {
 
     private int[][] mazeArray;
-    private int playerX;
-    private  int playerY;
+    private PlayerPosition playerPosition;
 
     //Setting up variables
     public Game(){
+
+        //TODO: Get variable from one point in solution
         mazeArray  = new int[][]{
                 {1, 1, 1, 1,1},
                 {1, 0, 0, 2,1},
@@ -18,6 +19,7 @@ public class Game {
                 {1, 0, 0, 9,1},
                 {1, 1, 1, 1,1}
         };
+
     }
 
     //Game start function
@@ -25,7 +27,7 @@ public class Game {
 
     }
 
-    //TODO: Perhaps move this to a seperate class
+    //TODO: Perhaps move this to a separate class
     public JFrame frame;
     public void createBoard(){
         frame = new JFrame();
@@ -43,6 +45,8 @@ public class Game {
         //frame.getContentPane().validate();
         //frame.getContentPane().repaint();
         frame.repaint();
+
+        playerPosition = this.getCurrentPos();
 
         //Controls for player / AI
         //TODO: Perhaps move
@@ -82,7 +86,7 @@ public class Game {
 
     //Code for moving a player up;
     private void moveUp(){
-        this.getCurrentPos();
+
         frame.repaint();
     }
 
@@ -101,19 +105,19 @@ public class Game {
 
     }
 
-    public void getCurrentPos() {
+    public PlayerPosition getCurrentPos() {
         for (int x = 0; x < mazeArray.length; x++) {
             for (int y = 0; y < mazeArray.length; y++) {
                 if (mazeArray[x][y] == 2) {
                     System.out.println("Player pos found!");
+                    this.playerPosition = new PlayerPosition(x, y);
 
-                    playerX = x;
-                    playerY = y;
-
-                    System.out.println("Player's at" + playerX + ", " + playerY);
+                    System.out.println("Player's at" + x + ", " + y);
+                    System.out.println("Update playerpos to: " +this.playerPosition);
                 }
             }
         }
+        return this.playerPosition;
     }
 
 }
