@@ -97,6 +97,12 @@ public class Game {
             frame.validate();
             frame.repaint();
 
+            try {
+                Thread.sleep(300);
+            } catch(Exception e){
+                System.out.println(e);
+            }
+
         } else {
             System.out.println("Stuck");
         }
@@ -116,6 +122,12 @@ public class Game {
             frame.validate();
             frame.repaint();
 
+            try {
+                Thread.sleep(300);
+            } catch(Exception e){
+                System.out.println(e);
+            }
+
         } else {
             System.out.println("Stuck");
         }
@@ -134,6 +146,12 @@ public class Game {
             frame.validate();
             frame.repaint();
 
+            try {
+                Thread.sleep(300);
+            } catch(Exception e){
+                System.out.println(e);
+            }
+
         } else {
             System.out.println("Stuck");
         }
@@ -151,6 +169,12 @@ public class Game {
             this.playerPosition = getCurrentPos();
             frame.validate();
             frame.repaint();
+
+            try {
+                Thread.sleep(300);
+            } catch(Exception e){
+                System.out.println(e);
+            }
 
         } else {
             System.out.println("Stuck");

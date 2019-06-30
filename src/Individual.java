@@ -3,25 +3,24 @@ import java.util.List;
 
 public class Individual {
 
-    private List<Integer> moveList = new ArrayList<>();
+    public List<Integer> moveList = new ArrayList<>();
+    public int[] moveBoi;
     private Game game;
 
     public Individual(Game game){
-        //this.moveList = moveList;
+        this.moveList = moveList;
         this.game = game;
-        moveList.add(4);
-        moveList.add(2);
     }
 
     //Movement in the movelist is based on numbers.
     //1 = Up; 2 = Left; 3 = Right; 4 = Down
     public void Move(){
         moveList.toArray();
-        for(int i = 0; i < moveList.size(); i++){
-//            if(moveList.get(i) == 1){
+        for(int i = 0; i < moveBoi.length; i++){
+//            if(moveBoi[i] == 1){
 //
 //            }
-            switch(moveList.get(i)) {
+            switch(moveBoi[i]) {
                 case 1: {
                     System.out.println("Moving up!");
                     game.moveUp();

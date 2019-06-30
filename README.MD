@@ -25,8 +25,10 @@ Write a program that solves a maze as described in the introduction with a genet
 - https://docs.oracle.com/javase/7/docs/api/java/awt/Graphics.html
 - https://docs.oracle.com/javase/7/docs/api/java/awt/Color.html
 - https://www.geeksforgeeks.org/print-2-d-array-matrix-java/
+- https://stackoverflow.com/questions/20844144/how-do-i-make-a-rectangle-move-across-the-screen-with-key-bindings
 - https://stackoverflow.com/questions/21969954/how-to-detect-a-key-press-in-java
 - https://commons.apache.org/proper/commons-lang/apidocs/org/apache/commons/lang3/tuple/Pair.html
 
 ## Links used | AI creation
- - 
+ - https://towardsdatascience.com/introduction-to-genetic-algorithms-including-example-code-e396e98d8bf3
+ - https://stackoverflow.com/questions/5887709/getting-random-numbers-in-java
