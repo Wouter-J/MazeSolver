@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.sql.SQLOutput;
 import java.util.Arrays;
 import java.util.Random;
@@ -54,6 +55,11 @@ public class Algorithm {
             Individual child = crossover(fittestBoi, secondFittest);
             mutate(child);
             evolve(child);
+
+            //TODO: Add visual representation for genrations etc
+//            JFrame infoFrame = game.frame;
+//
+//            infoFrame.getContentPane().;
 
             System.out.println("Generation: " + genCount + " Fittest: " + fittestBoi + " Moves" + fittestBoi.moveList);
             //TODO: Add a path for every individual and a best of replay function
