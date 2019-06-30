@@ -48,7 +48,11 @@ public class Algorithm {
         Individual fittestBoi = selection();
         Individual secondFittest = getSecondFittest();
 
-        crossover(fittestBoi, secondFittest);
+        Individual child = crossover(fittestBoi, secondFittest);
+        mutate(child);
+        evolve(child);
+
+        
         //game.startGame();
     }
 
@@ -86,49 +90,47 @@ public class Algorithm {
     //TODO: Crossover fittest from pop
     //During a crossover we create a new individual by combining aspects of selected individuals.
     //Mimicking reproduction from nature
-    public int[] crossover(Individual individual1, Individual individual2){
+
+    /**
+     * This function performs a uniform crossover //TODO: Make Order1 crossover of two arrays of ints(our movelist)
+     * Must be of the same lengt
+     * @param parent1 provides the first int array
+     * @param parent2 provides the second int array
+     * @return returns the child's movelist //TODO: Perhaps change to Individual itself.
+     */
+    public Individual crossover(Individual parent1, Individual parent2){
             Individual child = new Individual(game);
-            int[] tmp;
+            int[] childMoves = new int[MAX_MOVES];
+            System.out.println(childMoves);
 
-//            int crossoverPoint = rn.nextInt(individual1.moveList.length);
-
-//            for(int i = 0; i < individual1.moveList.length; i++){
-//                int temp = individual1.moveList[i];
-//                individual1.moveList[i] = individual2.moveList[i];
-//                individual2.moveList[i] = temp;
-//
-////                Undefined since move list does not exist yet
-////                child.moveList[i] = temp
-//            }
-
-
-//        for (int z = 0; z < individuals.length; z++){
-//            individuals[z] = new Individual(game);
-//        }
-//
-//        for(int i = 0; i < POP_SIZE; i++){
-//            //Create int array of size max moves
-//            int[] moves = new int[MAX_MOVES];
-//
-//            //For every move we create a random number.
-//            for(int x = 0; x < moves.length; x++) {
-//                //Random between 1 & 4
-//                moves[x] = ThreadLocalRandom.current().nextInt(1, 4 + 1);
-//            }
-//            individuals[i].moveList = moves;
-//        }
+            for(int i = 0; i < parent1.moveList.length; i++){
+                int rand = new Random().nextInt(2);
+                if(rand == 0){
+                    childMoves[i] = parent1.moveList[i];
+                }else{
+                    childMoves[i] = parent2.moveList[i];
+                }
+                System.out.println(childMoves[i]);
+            }
 
             //Uniform crossover; we randomly copy numbers from the first or second parent
-            for(int i = 0; i < individual1.moveList.length; i++){
-                int a = individual1.moveList[i];
+            for(int i = 0; i < parent1.moveList.length; i++){
+                int a = parent1.moveList[i];
+                childMoves[i] = a;
+//                if(new Random().nextInt(2) == 0){
+//                    parent1.moveList[i] = parent2.moveList[i];
+//                    parent2.moveList[i] = a;
+//                    childMoves[i] = a;
+////                    System.out.println(childMoves[i]);
+//                }
 
-                if(new Random().nextInt(2) == 0){
-                    individual1.moveList[i] = individual2.moveList[i];
-                    individual2.moveList[i] = a;
-                }
-                
+//                System.out.println(childMoves[i]);
             }
-        return child.moveList;
+            child.moveList = childMoves;
+            return child;
+            //return child.moveList;
+
+//        return childMoves;
     }
     //TODO: Mutate; should probably clear this up
     public void mutate(Individual individual){
@@ -142,6 +144,10 @@ public class Algorithm {
         }
     }
     //TODO: Spawn new pop
-
+    public Individual[] evolve(Individual child){
+        //TODO: Actually replace the weakest with the best
+        individuals[0] = child;
+        return this.individuals;
+    }
 
 }

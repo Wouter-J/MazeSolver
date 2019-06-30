@@ -15,7 +15,7 @@ Write a program that solves a maze as described in the introduction with a genet
     
 3.  Think of a fitness function that gives a score to how well an individual is performing. Some ideas are: positive points for the total distance from where you started, negative points for bumping into a wall, negative points for the distance to the goal after the sequence of moves has been executed. Be creative with thinking of scores!
     
-4.  In the genetic algorithm you should crossover the DNA of two individuals that score roughly the same on the fitness function. This means that like in the 8 queen example you swap parts of the sequence of moves. After this also some random mutation can be applied to the offspring.
+4.  ~~In the genetic algorithm you should crossover the DNA of two individuals that score roughly the same on the fitness function. This means that like in the 8 queen example you swap parts of the sequence of moves. After this also some random mutation can be applied to the offspring.~~ Might need some rework
     
 5.  Let only the best performing individuals of the offspring live (and don't feel sorry for those who didn't make it...)
 
@@ -33,3 +33,4 @@ Write a program that solves a maze as described in the introduction with a genet
  - https://towardsdatascience.com/introduction-to-genetic-algorithms-including-example-code-e396e98d8bf3
  - https://stackoverflow.com/questions/5887709/getting-random-numbers-in-java
  - https://stackoverflow.com/questions/43206593/how-to-split-an-integer-array-into-two
+ - https://stackoverflow.com/questions/33349698/order-one-crossover-in-java-genetic-algorithm
