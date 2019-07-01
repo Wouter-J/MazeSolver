@@ -10,9 +10,9 @@ public class Algorithm {
     private Game game;
     private Individual individual;
 
-    public int POP_SIZE = 2;
-    public int MAX_MOVES = 3;
-    public int genCount = 1; //current max amount of generations
+    public int POP_SIZE = 30; //Max size of each population
+    public int MAX_MOVES = 25; //Max amount of moves a player is allowed to take
+    public int genCount = 10; //current max amount of generations
 
     //TODO: Grab best half of pop; throw away others
 

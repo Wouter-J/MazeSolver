@@ -11,6 +11,7 @@ public class Game {
 
     //Setting up variables
     public Game(){
+        //Tiny Maze
 //        this.mazeArray = new int[][]{
 //                {1, 1, 1, 1,1},
 //                {1, 2, 1, 9,1},
@@ -18,6 +19,7 @@ public class Game {
 //                {1, 0, 0, 0,1},
 //                {1, 1, 1, 1,1}
 //        };
+        //Small Maze
         this.mazeArray = new int[][]{
                 {1, 1, 1, 1,1},
                 {1, 2, 0, 0,1},
@@ -33,6 +35,7 @@ public class Game {
                 {1, 0, 0, 0,1},
                 {1, 1, 1, 1,1}
         };
+
     }
 
     //Game start function
@@ -237,7 +240,7 @@ public class Game {
         if(this.playerPosition.getPlayerX() == this.winPosition.getPlayerX() &&
             this.playerPosition.getPlayerY() == this.winPosition.getPlayerY()) {
             System.out.println("Game won!");
-            //TODO: Implement game end
+            //TODO: Implement game end and add end values
             return true;
         } else {
             return false;

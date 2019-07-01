@@ -57,7 +57,13 @@ public class Individual {
                 case 2: {
                     System.out.println("Moving left!");
                     if(!(game.mazeArray[game.playerPosition.getPlayerY()][game.playerPosition.getPlayerX() -1] == 1)){
-                        freedomPoints += 1;
+                        playerString.concat("game.playerPosition.getPlayerY() + game.playerPosition.getPlayerX() -1");
+                        if(vistedMoves.contains(playerString)){
+                            vistedPoints += 2;
+                        } else {
+                            freedomPoints += 5;
+                            vistedMoves.add(playerString);
+                        }
                     } else {
                         System.out.println("Stuck");
                         wallHugs += 1;
@@ -71,7 +77,13 @@ public class Individual {
                 case 3: {
                     System.out.println("Moving right!");
                     if(!(game.mazeArray[game.playerPosition.getPlayerY()][game.playerPosition.getPlayerX() +1] == 1)){
-                        freedomPoints += 1;
+                        playerString.concat("game.playerPosition.getPlayerY() + game.playerPosition.getPlayerX() +1");
+                        if(vistedMoves.contains(playerString)){
+                            vistedPoints += 2;
+                        } else {
+                            freedomPoints += 5;
+                            vistedMoves.add(playerString);
+                        }
                     } else {
                         System.out.println("Stuck");
                         wallHugs += 1;
@@ -85,6 +97,13 @@ public class Individual {
                 case 4: {
                     System.out.println("Moving down!");
                     if(!(game.mazeArray[game.playerPosition.getPlayerY() +1][game.playerPosition.getPlayerX()] == 1)){
+                        playerString.concat("game.playerPosition.getPlayerY() + 1 + game.playerPosition.getPlayerX()");
+                        if(vistedMoves.contains(playerString)){
+                            vistedPoints += 2;
+                        } else {
+                            freedomPoints += 5;
+                            vistedMoves.add(playerString);
+                        }
                         freedomPoints += 1;
                     } else {
                         System.out.println("Stuck");
