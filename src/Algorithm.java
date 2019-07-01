@@ -104,16 +104,30 @@ public class Algorithm {
         return individuals[maxFit2];
     }
 
+    public int leastFittest(){
+        int minFit = Integer.MAX_VALUE;
+        int minFitIndex = 0;
+        for(int i = 0; i < POP_SIZE; i++){
+            if(minFit >= individuals[i].fitnessScore){
+                minFit = individuals[i].fitnessScore;
+                minFitIndex = i;
+            }
+        }
+//        int leastFittest = individuals[minFitIndex].fitnessScore;
+        System.out.println("Least fittest: " + leastFittest);
+        return minFitIndex;
+    }
+
     //TODO: Crossover fittest from pop
     //During a crossover we create a new individual by combining aspects of selected individuals.
     //Mimicking reproduction from nature
 
     /**
-     * This function performs a uniform crossover //TODO: Make Order1 crossover of two arrays of ints(our movelist)
-     * Must be of the same lengt
+     * This function performs a crossover
+     * Must be of the same lenght
      * @param parent1 provides the first int array
      * @param parent2 provides the second int array
-     * @return returns the child's movelist //TODO: Perhaps change to Individual itself.
+     * @return returns the child as individual
      */
     public Individual crossover(Individual parent1, Individual parent2){
             Individual child = new Individual(game);
@@ -147,10 +161,10 @@ public class Algorithm {
         }
     }
 
-    //TODO: Spawn new pop
+    //Replaces weakest pop with better pop
     public Individual[] evolve(Individual child){
-        //TODO: Actually replace the weakest with the best
-        individuals[0] = child;
+        int leastIndex = leastFittest();
+        individuals[leastIndex] = child;
         return this.individuals;
     }
 
