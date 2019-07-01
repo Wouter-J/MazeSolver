@@ -138,9 +138,6 @@ public class Individual {
 
         this.fitnessScore = freedomPoints - wallHugs - vistedPoints;
         System.out.println("Individual fit score: " + fitnessScore);
-
-        //TODO: Checkout this calc
-        //float score = Math.Abs((lastpos.x - endcell.gridPos.x) + Mathf.Abs(lastpos.y - endcell.gridPos.y))
     }
 
     @Override

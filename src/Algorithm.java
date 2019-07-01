@@ -14,8 +14,6 @@ public class Algorithm {
     public int MAX_MOVES = 25; //Max amount of moves a player is allowed to take
     public int genCount = 10; //current max amount of generations
 
-    //TODO: Grab best half of pop; throw away others
-
     Individual[] individuals = new Individual[POP_SIZE];
 
     public void setupPop(){
@@ -39,7 +37,7 @@ public class Algorithm {
 
     }
 
-    //TODO: Setup population & generate it
+    //Setup population & generate it
     public Algorithm(Game game){
         this.game = game;
         this.individual = new Individual(game);
@@ -58,19 +56,13 @@ public class Algorithm {
             mutate(child);
             evolve(child);
 
-            //TODO: Add visual representation for generations etc
-//            JFrame infoFrame = game.frame;
-//
-//            infoFrame.getContentPane().;
 
             System.out.println("Generation: " + genCount + " Fittest: " + fittestBoi + " Moves" + fittestBoi.moveList);
-            //TODO: Add a path for every individual and a best of replay function
-
-            //TODO: Make proper game end
+            //TODO: Extra: Add a path for every individual and a best of replay function
+            //TODO: Extra: Add visual representation for generations etc
         }
 
         genCount++;
-        //game.startGame();
     }
 
     //Get the fittest individual
@@ -114,11 +106,11 @@ public class Algorithm {
             }
         }
 //        int leastFittest = individuals[minFitIndex].fitnessScore;
-        System.out.println("Least fittest: " + leastFittest);
+        System.out.println("Least fittest: " + individuals[minFitIndex]);
         return minFitIndex;
     }
 
-    //TODO: Crossover fittest from pop
+    //Crossover fittest from pop
     //During a crossover we create a new individual by combining aspects of selected individuals.
     //Mimicking reproduction from nature
 

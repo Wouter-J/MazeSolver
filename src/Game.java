@@ -5,7 +5,7 @@ import java.awt.event.KeyListener;
 public class Game {
     public PlayerPosition playerPosition;
     public PlayerPosition winPosition; //Using the playerPosition class to also determine win.
-    public int SLEEP = 30;
+    public int SLEEP = 300;
 
     public int[][] mazeArray;
 
@@ -38,11 +38,6 @@ public class Game {
 
     }
 
-    //Game start function
-    public void startGame(){
-
-    }
-
     //TODO: Perhaps move this to a separate class
     public JFrame frame;
     public void createBoard(){
@@ -52,14 +47,10 @@ public class Game {
 
         frame.getContentPane().add(new Board(mazeArray));
 
-        //frame.setSize(800, 800);
         frame.setBounds(0, 0, 900, 900);
         frame.setResizable(false);
         frame.setVisible(true);
-        //frame.add(maze);
 
-        //frame.getContentPane().validate();
-        //frame.getContentPane().repaint();
         frame.repaint();
 
         playerPosition = this.getCurrentPos();
@@ -105,9 +96,6 @@ public class Game {
     //To move up we add one to the player's X axis so player {0, 1} becomes player {0, 2}
     //Based on this we can redraw the square that is a player; with this the player seems to move
     public void moveUp(){
-//        System.out.println(playerPosition.getPlayerX());
-//        System.out.println(playerPosition.getPlayerY());
-//        System.out.println(mazeArray[playerPosition.getPlayerY () -1][playerPosition.getPlayerX()]);
         if(!(mazeArray[playerPosition.getPlayerY() -1][playerPosition.getPlayerX()] == 1)){
 
             mazeArray[playerPosition.getPlayerY()][playerPosition.getPlayerX()] = 0;
@@ -233,14 +221,10 @@ public class Game {
     }
 
     public boolean checkWin(){
-//        System.out.println("Checkwin called");
-//        System.out.println(this.playerPosition.getPlayerX() + ", " +this.playerPosition.getPlayerY());
-//        System.out.println(this.winPosition.getPlayerX() + ", " +this.winPosition.getPlayerY());
         //TODO: Clean this up?
         if(this.playerPosition.getPlayerX() == this.winPosition.getPlayerX() &&
             this.playerPosition.getPlayerY() == this.winPosition.getPlayerY()) {
             System.out.println("Game won!");
-            //TODO: Implement game end and add end values
             return true;
         } else {
             return false;
