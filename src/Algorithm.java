@@ -10,9 +10,11 @@ public class Algorithm {
     private Game game;
     private Individual individual;
 
-    public int POP_SIZE = 5;
-    public int MAX_MOVES = 2;
-    public int genCount = 10; //current max amount of generations
+    public int POP_SIZE = 2;
+    public int MAX_MOVES = 3;
+    public int genCount = 1; //current max amount of generations
+
+    //TODO: Grab best half of pop; throw away others
 
     Individual[] individuals = new Individual[POP_SIZE];
 
@@ -56,13 +58,15 @@ public class Algorithm {
             mutate(child);
             evolve(child);
 
-            //TODO: Add visual representation for genrations etc
+            //TODO: Add visual representation for generations etc
 //            JFrame infoFrame = game.frame;
 //
 //            infoFrame.getContentPane().;
 
             System.out.println("Generation: " + genCount + " Fittest: " + fittestBoi + " Moves" + fittestBoi.moveList);
             //TODO: Add a path for every individual and a best of replay function
+
+            //TODO: Make proper game end
         }
 
         genCount++;
@@ -116,6 +120,7 @@ public class Algorithm {
             int[] childMoves = new int[MAX_MOVES];
             System.out.println(childMoves);
 
+        //Uniform crossover; we randomly copy numbers from the first or second parent
             for(int i = 0; i < parent1.moveList.length; i++){
                 int rand = new Random().nextInt(2);
                 if(rand == 0){
@@ -126,25 +131,10 @@ public class Algorithm {
                 System.out.println(childMoves[i]);
             }
 
-            //Uniform crossover; we randomly copy numbers from the first or second parent
-            for(int i = 0; i < parent1.moveList.length; i++){
-                int a = parent1.moveList[i];
-                childMoves[i] = a;
-//                if(new Random().nextInt(2) == 0){
-//                    parent1.moveList[i] = parent2.moveList[i];
-//                    parent2.moveList[i] = a;
-//                    childMoves[i] = a;
-////                    System.out.println(childMoves[i]);
-//                }
-
-//                System.out.println(childMoves[i]);
-            }
             child.moveList = childMoves;
             return child;
-            //return child.moveList;
-
-//        return childMoves;
     }
+
     //TODO: Mutate; should probably clear this up
     public void mutate(Individual individual){
         int[] moves = individual.moveList;
@@ -156,6 +146,7 @@ public class Algorithm {
             }
         }
     }
+
     //TODO: Spawn new pop
     public Individual[] evolve(Individual child){
         //TODO: Actually replace the weakest with the best

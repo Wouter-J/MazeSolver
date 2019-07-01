@@ -5,15 +5,31 @@ import java.awt.event.KeyListener;
 public class Game {
     public PlayerPosition playerPosition;
     public PlayerPosition winPosition; //Using the playerPosition class to also determine win.
+    public int SLEEP = 30;
 
     public int[][] mazeArray;
 
     //Setting up variables
     public Game(){
+//        this.mazeArray = new int[][]{
+//                {1, 1, 1, 1,1},
+//                {1, 2, 1, 9,1},
+//                {1, 0, 1, 0,1},
+//                {1, 0, 0, 0,1},
+//                {1, 1, 1, 1,1}
+//        };
         this.mazeArray = new int[][]{
                 {1, 1, 1, 1,1},
-                {1, 2, 1, 9,1},
+                {1, 2, 0, 0,1},
                 {1, 0, 1, 0,1},
+                {1, 0, 1, 0,1},
+                {1, 0, 1, 1,1},
+                {1, 0, 1, 9,1},
+                {1, 0, 1, 0,1},
+                {1, 0, 0, 0,1},
+                {1, 0, 1, 0,1},
+                {1, 0, 0, 0,1},
+                {1, 0, 1, 1,1},
                 {1, 0, 0, 0,1},
                 {1, 1, 1, 1,1}
         };
@@ -98,10 +114,17 @@ public class Game {
             frame.validate();
             frame.repaint();
 
-            checkWin();
+            if(checkWin()) {
+                frame.repaint();
+                try {
+                    Thread.sleep(SLEEP += 50000);
+                } catch(Exception e){
+                    System.out.println(e);
+                }
+            }
 
             try {
-                Thread.sleep(300);
+                Thread.sleep(SLEEP);
             } catch(Exception e){
                 System.out.println(e);
             }
@@ -129,7 +152,7 @@ public class Game {
             checkWin();
 
             try {
-                Thread.sleep(300);
+                Thread.sleep(SLEEP);
             } catch(Exception e){
                 System.out.println(e);
             }
@@ -154,7 +177,7 @@ public class Game {
             checkWin();
 
             try {
-                Thread.sleep(300);
+                Thread.sleep(SLEEP);
             } catch(Exception e){
                 System.out.println(e);
             }
@@ -179,7 +202,7 @@ public class Game {
             checkWin();
 
             try {
-                Thread.sleep(300);
+                Thread.sleep(SLEEP);
             } catch(Exception e){
                 System.out.println(e);
             }
@@ -214,6 +237,7 @@ public class Game {
         if(this.playerPosition.getPlayerX() == this.winPosition.getPlayerX() &&
             this.playerPosition.getPlayerY() == this.winPosition.getPlayerY()) {
             System.out.println("Game won!");
+            //TODO: Implement game end
             return true;
         } else {
             return false;

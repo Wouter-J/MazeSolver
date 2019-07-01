@@ -3,6 +3,9 @@
 Avans assignment for creating an AI that solves mazes.
 Entire Assignment down below
 
+## Research
+Waarom punten / pop op deze manier goed of slecht is etc.
+
 ## Introduction
 In this assignment you will solve a maze using a genetic algorithm. The maze you will solve is a 2D maze that consists of square cells. A cell is either open or a wall. You can move around on the open cells. The goal is to find a path from the starting cell to the end cell.
 

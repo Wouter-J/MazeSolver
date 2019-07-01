@@ -1,23 +1,27 @@
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
 
 public class Individual {
 
     //public List<Integer> moveList = new ArrayList<>();
     public int[] moveList;
-    public int fitnessScore;
+    public List<String> vistedMoves;
+    public String playerString;
     private Game game;
 
     //Variables for fitnessScore
     public int wallHugs;
     public int freedomPoints;
+    public int fitnessScore;
+    public int vistedPoints;
 
     public Individual(Game game){
+        this.vistedMoves = new ArrayList<>();
         this.game = game;
         this.fitnessScore = 0;
         this.wallHugs = 0;
         this.freedomPoints = 0;
+        this.vistedPoints = 0;
 
         //TODO: Add first and lastpos
     }
@@ -26,15 +30,23 @@ public class Individual {
     //1 = Up; 2 = Left; 3 = Right; 4 = Down
     public void Move(){
         for(int i = 0; i < moveList.length; i++){
+            playerString = "";
             switch(moveList[i]) {
                 case 1: {
+                    //TODO: Visited points to others
                     System.out.println("Moving up!");
                     //Logic for fitness score might need to be moved
                     if(!(game.mazeArray[game.playerPosition.getPlayerY() -1][game.playerPosition.getPlayerX()] == 1)){
-                        freedomPoints += 1;
+                        playerString.concat("game.playerPosition.getPlayerY() - 1 + game.playerPosition.getPlayerX()");
+                        if(vistedMoves.contains(playerString)){
+                            vistedPoints += 2;
+                        } else {
+                            freedomPoints += 5;
+                            vistedMoves.add(playerString);
+                        }
                     } else {
                         System.out.println("Stuck");
-                        wallHugs += 1;
+                        wallHugs += 10;
                     }
                     game.moveUp();
                     if(game.checkWin()){
@@ -102,7 +114,10 @@ public class Individual {
         System.out.println("Freedom points");
         System.out.println(this.freedomPoints);
 
-        this.fitnessScore = freedomPoints - wallHugs;
+        System.out.println("Visited points");
+        System.out.println(this.vistedPoints);
+
+        this.fitnessScore = freedomPoints - wallHugs - vistedPoints;
         System.out.println("Individual fit score: " + fitnessScore);
 
         //TODO: Checkout this calc
